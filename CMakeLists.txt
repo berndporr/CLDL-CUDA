@@ -1,16 +1,13 @@
-cmake_minimum_required(VERSION 3.14)
-project(CLDL LANGUAGES CUDA CXX)
+cmake_minimum_required(VERSION 3.20)
+project(CLDL LANGUAGES CXX CUDA)
 
 add_subdirectory(gtest)
-
-# packages
-find_package(CUDA QUIET REQUIRED)
 
 # nvcc flags
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};
         -rdc=true;)
 
-cuda_add_library(CLDL STATIC
+add_library(CLDL STATIC
         lib/Neuron.cu
         lib/Layer.cu
         lib/Net.cu)
