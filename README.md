@@ -10,22 +10,24 @@
  
  The CUDA developer toolkit is required to compile and run the library.
  
- Install instructions for Windows can be found [here](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html).
- 
  Install instructions for Linux can be found [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+
+ Install gtest (google's testing framework)
+```
+apt install libgtest-dev
+```
 
 ## Building
 CLDL_CUDA uses cmake. Just enter the CLDL_CUDA directory from the root:
 - ``cd CLDL_CUDA``
 
 and type:
-- ``mkdir build && cd build``
-- ``cmake ..``
+- ``cmake .``
 - ``make``
 
 ## Test suite:
-A gtest test suite is included in the build/gtest directory. The executable Google_Tests_run will be generated automatically when building CLDL_CUDA. Run the tests by doing:
-- ``cd build/gtest``
+A gtest test suite is included in the gtest directory. The executable Google_Tests_run will be generated automatically when building CLDL_CUDA. Run the tests by doing:
+- ``cd gtest``
 - ``./Google_Tests_run``
 
 ## License

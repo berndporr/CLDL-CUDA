@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.14)
 # 'Google_test' is the subproject name
 project(gtest LANGUAGES CUDA CXX)
 
-add_subdirectory(lib)
 add_executable(Google_Tests_run
         allTests.cu
         NeuronTest.cu
@@ -19,9 +18,3 @@ set_property(
         Google_Tests_run
         PROPERTY
         CUDA_RESOLVE_DEVICE_SYMBOLS ON)
-
-# 'lib' is the folder with Google Test sources
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-
-
