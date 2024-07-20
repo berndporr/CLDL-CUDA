@@ -17,7 +17,7 @@
 #include <vector>
 #include <fstream>
 
-#define MAX_BLOCKSIZE 1024
+#define MAX_BLOCKSIZE 512
 
 
 // GPU FUNCTIONS //

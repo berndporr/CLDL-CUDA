@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.10)
 # 'Google_test' is the subproject name
 project(gtest LANGUAGES CUDA CXX)
 
