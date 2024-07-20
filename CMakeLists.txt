@@ -3,6 +3,8 @@ project(CLDL LANGUAGES CXX CUDA)
 
 add_subdirectory(gtest)
 
+enable_testing()
+
 # nvcc flags
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};
         -rdc=true;)
