@@ -9,8 +9,10 @@
  A CUDA-enabled GPU is required to use this library.
  
  The CUDA developer toolkit is required to compile and run the library.
+
+ Tested with CUDA-10.2 on a jetson and CUDA-12.3 on a PC with an nvidia graphics card.
  
- Install instructions for Linux can be found [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+ Install instructions can be found [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
  Install gtest (google's testing framework)
 ```
