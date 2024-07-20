@@ -1,4 +1,4 @@
-# GPU Accelerated Closed-Loop Deep Learning
+# GPU Accelerated Realtime Deep Learning
 
  This is a GPU-accelerated version of the [Closed-Loop Deep Learning](https://github.com/Sama-Darya/CLDL) library.
  
@@ -37,3 +37,7 @@ or via cmake run `ctest` or `make test`.
 GNU GENERAL PUBLIC LICENSE
 
 Version 3, 29 June 2007
+
+## Contact
+
+Bernd Porr: bernd.porr@glasgow.ac.uk
