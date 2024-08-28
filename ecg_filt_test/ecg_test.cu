@@ -14,7 +14,7 @@
 using namespace std; 
 
 //The nlayers should be an integer of the total number of hidden layers required not including the input layer
-const int nLayers = 2;
+const int nLayers = 3;
 
 //Neuron array should hold the number of neurons for each layer, each array element is a
 //single input 
@@ -29,8 +29,6 @@ int main(int argc, char* argv[]){
 
     std::cout<<"Made it to the Start :)\n\n";
 
-
-
     //Opening the .dat file and the output file
     //in the final program this should be replaced with the mic inputs
     FILE *finput = fopen("ecg50hz.dat","rt");
@@ -43,7 +41,8 @@ int main(int argc, char* argv[]){
     //Filling Neurons_array with some arbitray numbers to test network
     //Setting the output layer to be of size 1
     nNeurons[0] = nInputs;
-    nNeurons[1] = 1;
+    nNeurons[1] = nInputs/4;
+    nNeurons[2] = 1;
 
     //Filling Input array with 0s array 
 
@@ -74,7 +73,7 @@ int main(int argc, char* argv[]){
     net -> setInputs(delay_line);
 
     //Setting Learning Rate
-    net -> setLearningRate(0.00000001);
+    net -> setLearningRate(0.1);
 
     //Setting up a variable that allows for access to read the final output of the network
     Layer *output_layer = net -> getLayer(nLayers-1);
@@ -98,11 +97,7 @@ int main(int argc, char* argv[]){
     }
     std::cout << "\n";
 
-
-
-
     auto start = std::chrono::high_resolution_clock::now();
-
 
     double fs = 1000; // Hz
     double noise_f = 50; //Hz
@@ -113,6 +108,8 @@ int main(int argc, char* argv[]){
 	    //reading the input signal and generating the ref_noise
 	    double input_signal;		
 	    if (fscanf(finput,"%lf\n",&input_signal)<1) break;
+	    input_signal -= 2048.0;
+	    input_signal /= 2048.0;
 
 	    double ref_noise = sin(2*M_PI*norm_noise_f*(double)i);
 
