@@ -13,7 +13,7 @@ Run:
 which generates `ecg_filtered.dat`. Data format: `error input canceller`.
 The error column is also the signal with 50Hz removed.
 
-the plot it with:
+Then plot it with gnuplot:
 
 ```
 gnuplot
