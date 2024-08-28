@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(CLDL LANGUAGES CXX CUDA)
 
 add_subdirectory(gtest)
+add_subdirectory(ecg_filt_test)
 
 enable_testing()
 
