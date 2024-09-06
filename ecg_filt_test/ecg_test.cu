@@ -62,7 +62,6 @@ int main(int argc, char* argv[]){
     Net *net;
     net = new Net(nLayers,nNeurons,nInputs);
 
-
     //Initialises the network with: weights, biases and activation function
     // for Weights; W_Zeroes sets to 0 , W_Ones sets to 1 , W_random sets to a randome value
     // for Bias; B_None sets to , B_Random sets to a random value
@@ -102,12 +101,14 @@ int main(int argc, char* argv[]){
     double fs = 1000; // Hz
     double noise_f = 50; //Hz
     double norm_noise_f = noise_f / fs;
+    int nSamples = 0;
 
     for(int i=0;;i++) 
 	{
 	    //reading the input signal and generating the ref_noise
 	    double input_signal;		
 	    if (fscanf(finput,"%lf\n",&input_signal)<1) break;
+	    nSamples++;
 	    input_signal -= 2048.0;
 	    input_signal /= 2048.0;
 
@@ -125,13 +126,10 @@ int main(int argc, char* argv[]){
 	    //propegating the sample forwards
 	    net ->propInputs();
 
-
 	    //storing output of the function and calculation error
 	    double canceller = net->getOutput(0);
 
-
 	    double error = input_signal - canceller;
-
 
 	    //Setting the backward error and updating weights
 	    net->setBackwardError(error);
@@ -143,11 +141,10 @@ int main(int argc, char* argv[]){
 
     auto elapsed = std::chrono::high_resolution_clock::now() - start;
 
-    long long microseconds_taken = std::chrono::duration_cast<std::chrono::microseconds>(
-											 elapsed).count();
+    const auto seconds_taken = (double)(std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count())/1E6;
+    const double maxSamplingRate = nSamples / seconds_taken;
 
-    
-    std::cout<<"Time Taken:     "<<microseconds_taken<<"µs\n";
+    printf("Time taken = %f s, max sampling rate = %f Hz\n", seconds_taken, maxSamplingRate);
 
     fclose(finput);
     fclose(foutput);
